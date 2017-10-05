@@ -1,7 +1,7 @@
 var config = {
   basePath: '/bws/api',
   disableLogs: false,
-  port: 3232,
+  port: 4232,
 
   // Uncomment to make BWS a forking server
   // cluster: true,
@@ -21,30 +21,30 @@ var config = {
 
   storageOpts: {
     mongoDb: {
-      uri: 'mongodb://localhost:27017/bws',
+      uri: 'mongodb://localhost:27017/bws-alohacoin',
     },
   },
   lockOpts: {
     //  To use locker-server, uncomment this:
     lockerServer: {
       host: 'localhost',
-      port: 3231,
+      port: 4231,
     },
   },
   messageBrokerOpts: {
     //  To use message broker server, uncomment this:
     messageBrokerServer: {
-      url: 'http://localhost:3380',
+      url: 'http://localhost:4380',
     },
   },
   blockchainExplorerOpts: {
     livenet: {
       provider: 'insight',
-      url: 'https://insight.bitpay.com:443',
+      url: 'https://insight.alohacoin.nationofhawaii.info:443',
     },
     testnet: {
       provider: 'insight',
-      url: 'https://test-insight.bitpay.com:443',
+      url: 'https://test-insight.alohacoin.nationofhawaii.info::443',
       // url: 'http://localhost:3001',
       // Multiple servers (in priority order)
       // url: ['http://a.b.c', 'https://test-insight.bitpay.com:443'],
