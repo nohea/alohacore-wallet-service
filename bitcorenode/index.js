@@ -84,6 +84,11 @@ Service.prototype._getConfiguration = function() {
     apiPrefix: '/insight-api'
   };
 
+  // use base config.js if exists
+  if(baseConfig && baseConfig.blockchainExplorerOpts) {
+      providerOptions = baseConfig.blockchainExplorerOpts;
+  }
+
   // A bitcore-node is either livenet or testnet, so we'll pass
   // the configuration options to communicate via the local running
   // instance of the insight-api service.
