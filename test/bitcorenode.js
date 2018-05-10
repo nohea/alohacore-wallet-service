@@ -26,9 +26,9 @@ describe('Bitcore Node Service', function() {
         key: 'key',
         cert: 'cert'
       });
-      service.bwsPort.should.equal(3232);
-      service.messageBrokerPort.should.equal(3380);
-      service.lockerPort.should.equal(3231);
+      service.bwsPort.should.equal(4232);
+      service.messageBrokerPort.should.equal(4380);
+      service.lockerPort.should.equal(4231);
     });
     it('direct https options', function() {
       var node = {};
@@ -46,9 +46,9 @@ describe('Bitcore Node Service', function() {
         key: 'key',
         cert: 'cert'
       });
-      service.bwsPort.should.equal(3232);
-      service.messageBrokerPort.should.equal(3380);
-      service.lockerPort.should.equal(3231);
+      service.bwsPort.should.equal(4232);
+      service.messageBrokerPort.should.equal(4380);
+      service.lockerPort.should.equal(4231);
     });
     it('can set custom ports', function() {
       var node = {};
@@ -110,30 +110,32 @@ describe('Bitcore Node Service', function() {
       var options = {
         node: {
           network: bitcore.Networks.livenet,
-          port: 3001
+          port: 3441
         }
       };
       var service = new Service(options);
       var config = service._getConfiguration();
       config.blockchainExplorerOpts.livenet.should.deep.equal({
         'apiPrefix': '/insight-api',
-        'provider': 'insight',
-        'url': 'http://localhost:3001'
+        'network': 'livenet',
+        'provider': 'iquidus',
+        'url': 'http://localhost:3441'
       });
     });
     it('testnet local insight', function() {
       var options = {
         node: {
           network: bitcore.Networks.testnet,
-          port: 3001
+          port: 3441
         }
       };
       var service = new Service(options);
       var config = service._getConfiguration();
       config.blockchainExplorerOpts.testnet.should.deep.equal({
         'apiPrefix': '/insight-api',
-        'provider': 'insight',
-        'url': 'http://localhost:3001'
+        'network': 'testnet',
+        'provider': 'iquidus',
+        'url': 'http://localhost:3441'
       });
     });
   });

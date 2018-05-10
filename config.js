@@ -38,10 +38,11 @@ var config = {
     },
   },
   blockchainExplorerOpts: {
-    monitoredNetworks: ['livenet'],
+    //monitoredNetworks: ['livenet'],
     provider: 'iquidus',
     network: 'livenet',
-    url: 'http://explorer.alohaproto.hekili.net:3441',
+    url: 'http://localhost:3441',
+    apiPrefix: '/insight-api',
   },
   pushNotificationsOpts: {
     templatePath: './lib/templates',
