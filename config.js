@@ -43,6 +43,12 @@ var config = {
     network: 'livenet',
     url: 'http://localhost:3441',
     apiPrefix: '/insight-api',
+    feePerKb: 0.0001, // only for fixed-rate coins like Peercoin
+  },
+  altcoinOpts: {
+      ticker: 'ALCP',
+      coinName: 'AlohaProto',
+      minTxFee: 0.0001,
   },
   pushNotificationsOpts: {
     templatePath: './lib/templates',
