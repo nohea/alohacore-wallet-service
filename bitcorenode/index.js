@@ -29,14 +29,15 @@ var baseConfig = require('../config');
  */
 var Service = function(options) {
   EventEmitter.call(this);
-
+  //console.log("Service options.bwsPort %d, options.messageBrokerPort %d", options.bwsPort, options.messageBrokerPort);
+  
   this.node = options.node;
   this.https = options.https || this.node.https;
   this.httpsOptions = options.httpsOptions || this.node.httpsOptions;
-  this.bwsPort = options.bwsPort || baseConfig.port;
+  this.bwsPort = options.bwsPort || options.port || baseConfig.port;
   this.messageBrokerPort = options.messageBrokerPort || 4380;
-  if (baseConfig.lockOpts) {
-    this.lockerPort = baseConfig.lockOpts.lockerServer.port;
+  if (options.lockOpts) {
+    this.lockerPort = options.lockOpts.lockerServer.port;
   }
   this.lockerPort = options.lockerPort || this.lockerPort;
 };
