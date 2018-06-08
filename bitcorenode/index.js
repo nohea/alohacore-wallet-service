@@ -29,7 +29,7 @@ var baseConfig = require('../config');
  */
 var Service = function(options) {
   EventEmitter.call(this);
-  //console.log("Service options.bwsPort %d, options.messageBrokerPort %d", options.bwsPort, options.messageBrokerPort);
+  console.log("Service options.bwsPort %d, options.messageBrokerPort %d", options.bwsPort, options.messageBrokerPort);
   
   this.node = options.node;
   this.https = options.https || this.node.https;
@@ -44,6 +44,7 @@ var Service = function(options) {
 
 util.inherits(Service, EventEmitter);
 
+// TO DO remove required dep on the insight-api service. Can use Iquidus + Insight API
 Service.dependencies = ['insight-api'];
 
 /**
@@ -87,7 +88,8 @@ Service.prototype._getConfiguration = function() {
 
   // use base config.js if exists
   if(baseConfig && baseConfig.blockchainExplorerOpts) {
-      providerOptions = baseConfig.blockchainExplorerOpts;
+    console.log("Service._getConfiguration() : using baseConfig.blockchainExplorerOpts for providerOptions");
+    providerOptions = baseConfig.blockchainExplorerOpts;
   }
 
   // A bitcore-node is either livenet or testnet, so we'll pass
@@ -142,6 +144,11 @@ Service.prototype.start = function(done) {
     config = self._getConfiguration();
   } catch (err) {
     return done(err);
+  }
+
+  // try custom config from bitcore-node.json if passed in
+  if( self.customConfig ) {
+    config = self.customConfig;
   }
 
   // Locker Server
