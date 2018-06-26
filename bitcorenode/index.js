@@ -91,6 +91,9 @@ Service.prototype._getConfiguration = function() {
     console.log("Service._getConfiguration() : using baseConfig.blockchainExplorerOpts for providerOptions");
     providerOptions = baseConfig.blockchainExplorerOpts;
   }
+  else {
+    console.log("Service._getConfiguration() : no baseConfig.blockchainExplorerOpts");
+  }
 
   // A bitcore-node is either livenet or testnet, so we'll pass
   // the configuration options to communicate via the local running
@@ -148,6 +151,7 @@ Service.prototype.start = function(done) {
 
   // try custom config from bitcore-node.json if passed in
   if( self.customConfig ) {
+    console.log("loading self.customConfig as config...");
     config = self.customConfig;
   }
 
